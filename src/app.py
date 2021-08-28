@@ -50,4 +50,4 @@ async def root():
 
 @app.get("/status")
 def status():
-    return {'msg': "I'm alive!!!"}
+    return {'msg': "I'm alive!!"}
