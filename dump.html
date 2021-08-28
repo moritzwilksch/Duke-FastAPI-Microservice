@@ -1,0 +1,898 @@
+
+<!doctype html>
+<html lang="en" class="js js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets
+rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms 
+csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+	<head>
+		<meta name="author" content="Duke University Student Affairs">
+        <meta name="copyright" content="Duke University Student Affairs">
+		<meta charset="utf-8">
+	
+		<title> Student Affairs | Dining Menus & Hours		</title>
+		<style type="text/css" nonce="jDjs99X+xvrPce5EVqJKY/vNiVUSD1ZoijEebx9FPvU=">
+			#custom-dsta-app #main-wrapper:before { content:" "; clear: both; }
+		</style>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-12588711-1"></script>
+        <script nonce="t0C1x7LT2mxhWPKbmjescPxNrBl70sEEAy7nymTa03Q=">
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){ dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'UA-12588711-1');
+        </script>
+
+        <!-- jQuery scripts -->
+        <script src="/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="/jquery/jquery-ui.min.js" type="text/javascript"></script>
+        <link media="all" href="/jquery/themes/cupertino/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+        <link media="all" href="/jquery/themes/cupertino/theme.css" rel="stylesheet" type="text/css" />
+        
+        
+        		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="css/layout.css" rel="stylesheet" type="text/css" />
+		<script src="js/modernizr.js" type="text/javascript"></script>
+		<script type="text/javascript" nonce="t0C1x7LT2mxhWPKbmjescPxNrBl70sEEAy7nymTa03Q=">
+			(function() {			window.onload = init;
+
+			function checkBrowserDateInputType(){
+				return (
+					Modernizr.inputtypes.date &&
+					Modernizr.input.min &&
+					Modernizr.input.max				);
+			}
+
+			function init(){
+				let d = new Date();
+				let month = d.getMonth() + 1;
+				let day = d.getDate();
+				let year = d.getFullYear();
+				if( month < 10 ){ month = "0" + month; }
+				if( day < 10 ){ day = "0" + day; }
+				let min_date = [year, month, day].join('-');
+
+				let $dp_div_1d = document.getElementById('dp_div_1d'); 
+				let $dp_div_2d = document.getElementById('dp_div_2d'); 
+				let $dp_div_3d = document.getElementById('dp_div_3d'); 
+				let $dp_div_4d = document.getElementById('dp_div_4d'); 
+				let $dp_div_5d = document.getElementById('dp_div_5d'); 
+				let $dp_div_6d = document.getElementById('dp_div_6d'); 
+				let $dp_div_7d = document.getElementById('dp_div_7d'); 
+
+				if( checkBrowserDateInputType() ){
+					let md = new Date(d.getFullYear(), d.getMonth() + 7, d.getDate());
+					let max_year = md.getFullYear();
+					let max_month = md.getMonth();
+					let max_day = md.getDate();
+					if( max_month < 10 ){ max_month = "0" + max_month; }
+					if( max_day < 10 ){ max_day = "0" + max_day; }
+					let max_date = [max_year, max_month, max_day].join("-");
+
+					let dp_html = '<input type="date" class="dp_sd" id="dp_sd" name="dp_sd" min="' + min_date + '" max="' + max_date + '" value="2021-08-28" />&nbsp;<input type="submit" name="dp_select" value="View Date" />'; 
+					$dp_div_1d.innerHTML = dp_html;
+					$dp_div_2d.innerHTML = dp_html;
+					$dp_div_3d.innerHTML = dp_html;
+					$dp_div_4d.innerHTML = dp_html;
+					$dp_div_5d.innerHTML = dp_html;
+					$dp_div_6d.innerHTML = dp_html;
+					$dp_div_7d.innerHTML = dp_html;
+				}
+				else {
+					let dp_html = '<input type="text" class="dp_sd" id="dp_sd" name="dp_sd" maxlength="10" size="10" placeholder="08/28/2021" readonly />&nbsp;<input type="submit" name="dp_select" value="View Date" />';
+					$dp_div_1d.innerHTML = dp_html;
+					$dp_div_1d.innerHTML = dp_html;
+					$dp_div_2d.innerHTML = dp_html;
+					$dp_div_3d.innerHTML = dp_html;
+					$dp_div_4d.innerHTML = dp_html;
+					$dp_div_5d.innerHTML = dp_html;
+					$dp_div_6d.innerHTML = dp_html;
+					$dp_div_7d.innerHTML = dp_html;
+
+					let $jq = jQuery.noConflict();
+					$jq(document).ready(function(){
+						$jq("input.dp_sd").datepicker({
+							dateFormat: "mm/dd/yy",
+							defaultDate: 0,
+							maxDate: "+6m",
+							minDate: 0,
+							onSelect: function (){
+								let date = $jq(this).datepicker("getDate");
+								let format = $jq(this).datepicker("option", "dateFormat");
+								let display = $jq.datepicker.formatDate(format, date);
+								$jq("input.dp_sd").val(display); }
+							});
+
+							$jq("input.dp_sd").click(function(){
+								$jq(this).datepicker().datepicker("show");
+							});
+						});
+					}
+				}
+			})();
+		</script>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link media="all" href="/css/cocg_styles.css" rel="stylesheet" type="text/css">
+        <link
+            media=”screen”
+            rel=”stylesheet”
+            href=”https://alertbar.oit.duke.edu/sites/all/themes/blackwell/css/alert.css”
+            type=”text/css”
+        />
+		<link
+            media="all"
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            media="all"
+            href="https://studentaffairs.duke.edu/themes/custom/stuaff/favicon.ico"
+            rel="shortcut icon"
+            type="image/vnd.microsoft.icon"
+        />
+		<link
+            media="all"
+            href="https://fonts.googleapis.com/css?family=EB+Garamond|Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800|Roboto+Condensed:300italic,400italic,700italic,400,300,700"
+            rel="stylesheet"
+            type="text/css"
+        />
+    </head>
+	<body class="html front not-logged-in no-sidebars page-node page-node- page-node-4132 node-type-index-page">
+		<div id="header-container">
+			<header>
+				<div class="region region-header">
+					<aside id="block-block-97" class="block block-block">
+						<div class="clearfix content">
+							<p>
+								<a class="duke" href="https://duke.edu">Duke University</a>
+								<a class="student-affairs" href="https://studentaffairs.duke.edu">Student Affairs</a>
+							</p>
+						</div>
+					</aside>
+				</div>
+			</header>
+            <script src=”https://alertbar.oit.duke.edu/alert.html”type=”text/javascript”></script>
+		</div>
+		<div id="main-wrapper">
+			<div id="main" class="clearfix"><br/>
+				<div class="dining" id="dining_content">
+					<div class="dining_navigation_one_day">
+						<form id="dining_navigation_form" class="dining_navigation_form" action="/dining/menus-hours/index.php" method="POST">
+							<div class="dining_navigation_date_picker" id="dp_div_1d"></div>
+							<div class="dining_navigation_next_date">
+								<input type="submit" name="next_sd_btn" class="dining_navigation_next_start_date" value="Tomorrow" />
+								<input type="hidden" name="next_sd_date" value="08/29/2021" />
+							</div>
+						</form>							<form class="dining_navigation_filter_locations" method="POST" action="/dining/menus-hours/index.php">
+								<div class="dining_navigation_filter_locations_content">
+									<select name="filter">
+										<option value="all_locations">All Locations</option>
+										<option value="west_campus">West Campus</option>
+										<option value="brodhead_center">West Campus - Brodhead Center</option>
+										<option value="bryan_center">West Campus - Bryan Center</option>
+										<option value="east_campus">East Campus</option>
+										<option value="central_campus">Central Campus</option>
+										<option value="mobile">Duke Dine Out Locations</option>
+									</select>
+									<input type="submit" value="Filter Locations">									<input type="hidden" name="filter_sd" value="2021-08-28" />								</div>
+							</form>					</div>					<div class="dining_navigation_two_days">
+						<form id="dining_navigation_form" class="dining_navigation_form" action="/dining/menus-hours/index.php" method="POST">
+							<div class="dining_navigation_date_picker" id="dp_div_2d"></div>
+							<div class="dining_navigation_next_date">
+								<input type="submit" name="next_sd_btn" class="dining_navigation_next_start_date" value="Next Two Days" />
+								<input type="hidden" name="next_sd_date" value="08/30/2021" />
+							</div>
+						</form>							<form class="dining_navigation_filter_locations" method="POST" action="/dining/menus-hours/index.php">
+								<div class="dining_navigation_filter_locations_content">
+									<select name="filter">
+										<option value="all_locations">All Locations</option>
+										<option value="west_campus">West Campus</option>
+										<option value="brodhead_center">West Campus - Brodhead Center</option>
+										<option value="bryan_center">West Campus - Bryan Center</option>
+										<option value="east_campus">East Campus</option>
+										<option value="central_campus">Central Campus</option>
+										<option value="mobile">Duke Dine Out Locations</option>
+									</select>
+									<input type="submit" value="Filter Locations">									<input type="hidden" name="filter_sd" value="2021-08-28" />								</div>
+							</form>					</div>					<div class="dining_navigation_three_days">
+						<form id="dining_navigation_form" class="dining_navigation_form" action="/dining/menus-hours/index.php" method="POST">
+							<div class="dining_navigation_date_picker" id="dp_div_3d"></div>
+							<div class="dining_navigation_next_date">
+								<input type="submit" name="next_sd_btn" class="dining_navigation_next_start_date" value="Next Three Days" />
+								<input type="hidden" name="next_sd_date" value="08/31/2021" />
+							</div>
+						</form>							<form class="dining_navigation_filter_locations" method="POST" action="/dining/menus-hours/index.php">
+								<div class="dining_navigation_filter_locations_content">
+									<select name="filter">
+										<option value="all_locations">All Locations</option>
+										<option value="west_campus">West Campus</option>
+										<option value="brodhead_center">West Campus - Brodhead Center</option>
+										<option value="bryan_center">West Campus - Bryan Center</option>
+										<option value="east_campus">East Campus</option>
+										<option value="central_campus">Central Campus</option>
+										<option value="mobile">Duke Dine Out Locations</option>
+									</select>
+									<input type="submit" value="Filter Locations">									<input type="hidden" name="filter_sd" value="2021-08-28" />								</div>
+							</form>					</div>					<div class="dining_navigation_four_days">
+						<form id="dining_navigation_form" class="dining_navigation_form" action="/dining/menus-hours/index.php" method="POST">
+							<div class="dining_navigation_prev_date">&nbsp;</div>
+							<div class="dining_navigation_date_picker" id="dp_div_4d"></div>
+							<div class="dining_navigation_next_date">
+								<input type="submit" name="next_sd_btn" class="dining_navigation_next_start_date" value="Next Four Days" />
+								<input type="hidden" name="next_sd_date" value="09/01/2021" />
+							</div>
+						</form>							<form class="dining_navigation_filter_locations" method="POST" action="/dining/menus-hours/index.php">
+								<div class="dining_navigation_filter_locations_content">
+									<select name="filter">
+										<option value="all_locations">All Locations</option>
+										<option value="west_campus">West Campus</option>
+										<option value="brodhead_center">West Campus - Brodhead Center</option>
+										<option value="bryan_center">West Campus - Bryan Center</option>
+										<option value="east_campus">East Campus</option>
+										<option value="central_campus">Central Campus</option>
+										<option value="mobile">Duke Dine Out Locations</option>
+									</select>
+									<input type="submit" value="Filter Locations">									<input type="hidden" name="filter_sd" value="2021-08-28" />								</div>
+							</form>					</div>					<div class="dining_navigation_five_days">
+						<form id="dining_navigation_form" class="dining_navigation_form" action="/dining/menus-hours/index.php" method="POST">
+							<div class="dining_navigation_prev_date">&nbsp;</div>
+							<div class="dining_navigation_date_picker" id="dp_div_5d"></div>
+							<div class="dining_navigation_next_date">
+								<input type="submit" name="next_sd_btn" class="dining_navigation_next_start_date" value="Next Five Days" />
+								<input type="hidden" name="next_sd_date" value="09/02/2021" />
+							</div>
+						</form>							<form class="dining_navigation_filter_locations" method="POST" action="/dining/menus-hours/index.php">
+								<div class="dining_navigation_filter_locations_content">
+									<select name="filter">
+										<option value="all_locations">All Locations</option>
+										<option value="west_campus">West Campus</option>
+										<option value="brodhead_center">West Campus - Brodhead Center</option>
+										<option value="bryan_center">West Campus - Bryan Center</option>
+										<option value="east_campus">East Campus</option>
+										<option value="central_campus">Central Campus</option>
+										<option value="mobile">Duke Dine Out Locations</option>
+									</select>
+									<input type="submit" value="Filter Locations">									<input type="hidden" name="filter_sd" value="2021-08-28" />								</div>
+							</form>					</div>					<div class="dining_navigation_six_days">
+						<form id="dining_navigation_form" class="dining_navigation_form" action="/dining/menus-hours/index.php" method="POST">
+							<div class="dining_navigation_prev_date">&nbsp;</div>
+							<div class="dining_navigation_date_picker" id="dp_div_6d"></div>
+							<div class="dining_navigation_next_date">
+								<input type="submit" name="next_sd_btn" class="dining_navigation_next_start_date" value="Next Six Days" />
+								<input type="hidden" name="next_sd_date" value="09/03/2021" />
+							</div>
+						</form>							<form class="dining_navigation_filter_locations" method="POST" action="/dining/menus-hours/index.php">
+								<div class="dining_navigation_filter_locations_content">
+									<select name="filter">
+										<option value="all_locations">All Locations</option>
+										<option value="west_campus">West Campus</option>
+										<option value="brodhead_center">West Campus - Brodhead Center</option>
+										<option value="bryan_center">West Campus - Bryan Center</option>
+										<option value="east_campus">East Campus</option>
+										<option value="central_campus">Central Campus</option>
+										<option value="mobile">Duke Dine Out Locations</option>
+									</select>
+									<input type="submit" value="Filter Locations">									<input type="hidden" name="filter_sd" value="2021-08-28" />								</div>
+							</form>					</div>					<div class="dining_navigation_seven_days">
+						<form id="dining_navigation_form" class="dining_navigation_form" action="/dining/menus-hours/index.php" method="POST">
+							<div class="dining_navigation_prev_date">&nbsp;</div>
+							<div class="dining_navigation_date_picker" id="dp_div_7d"></div>
+							<div class="dining_navigation_next_date">
+								<input type="submit" name="next_sd_btn" class="dining_navigation_next_start_date" value="Next Seven Days" />
+								<input type="hidden" name="next_sd_date" value="09/04/2021" />
+							</div>
+						</form>							<form class="dining_navigation_filter_locations" method="POST" action="/dining/menus-hours/index.php">
+								<div class="dining_navigation_filter_locations_content">
+									<select name="filter">
+										<option value="all_locations">All Locations</option>
+										<option value="west_campus">West Campus</option>
+										<option value="brodhead_center">West Campus - Brodhead Center</option>
+										<option value="bryan_center">West Campus - Bryan Center</option>
+										<option value="east_campus">East Campus</option>
+										<option value="central_campus">Central Campus</option>
+										<option value="mobile">Duke Dine Out Locations</option>
+									</select>
+									<input type="submit" value="Filter Locations">									<input type="hidden" name="filter_sd" value="2021-08-28" />								</div>
+							</form>						<form action="print/" method="GET" target="_blank" class="dining_navigation_print_week" name="print_week" id="print_week">
+							<div class="dining_navigation_print_week_content">
+								<input type="submit" value="Print Displayed Week">
+								<input type="hidden" name="sd" value="1630123200" />
+							</div>						</form>					</div>					<div class="dining_locations_hours_content">
+						<table id="schedule_table">
+							<tr id="schedule_header_row">
+								<td id="schedule_place_data">Location</td>
+								<td id="schedule_time_data_day_one">Saturday<br />8 / 28 / 21</td>
+								<td id="schedule_time_data_day_two">Sunday<br />8 / 29 / 21</td>
+								<td id="schedule_time_data_day_three">Monday<br />8 / 30 / 21</td>
+								<td id="schedule_time_data_day_four">Tuesday<br />8 / 31 / 21</td>
+								<td id="schedule_time_data_day_five">Wednesday<br />9 / 1 / 21</td>
+								<td id="schedule_time_data_day_six">Thursday<br />9 / 2 / 21</td>
+								<td id="schedule_time_data_day_seven">Friday<br />9 / 3 / 21</td>
+							</tr>
+							<tr id="schedule_zebra_row">
+								<td id="schedule_place_data">
+									<a href="http://studentaffairs.duke.edu/dining/venues-and-menus/bella-union" target="_blank">Bella Union</a><br />(<a href="https://google.com/maps/@35.9992010000,-78.9368560000,19z" target="_blank">McClendon Tower</a>)
+								</td>
+								<td id="schedule_time_data_day_one">10:00 am -<br />10:00 pm</td>
+								<td id="schedule_time_data_day_two">11:00 am -<br />12:00 am</td>
+								<td id="schedule_time_data_day_three">8:00 am -<br />12:00 am</td>
+								<td id="schedule_time_data_day_four">8:00 am -<br />12:00 am</td>
+								<td id="schedule_time_data_day_five">8:00 am -<br />12:00 am</td>
+								<td id="schedule_time_data_day_six">8:00 am -<br />12:00 am</td>
+								<td id="schedule_time_data_day_seven">8:00 am -<br />10:00 pm</td>
+							</tr>
+							<tr id="schedule_no_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/dining/beyublue" target="_blank">Beyu Blue</a><br />(<a href="https://google.com/maps/@36.0008600000,-78.9406000000,19z" target="_blank">Bryan Center</a>)
+								</td>
+								<td id="schedule_time_data_day_one">8:00 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_two">8:00 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_three">7:30 am -<br />8:00 pm</td>
+								<td id="schedule_time_data_day_four">7:30 am -<br />8:00 pm</td>
+								<td id="schedule_time_data_day_five">7:30 am -<br />8:00 pm</td>
+								<td id="schedule_time_data_day_six">7:30 am -<br />8:00 pm</td>
+								<td id="schedule_time_data_day_seven">7:30 am -<br />8:00 pm</td>
+							</tr>
+							<tr id="schedule_zebra_row">
+								<td id="schedule_place_data">
+									<a href="" target="_blank">Beyu Caff&eacute; at Duke Law</a><br />(<a href="https://google.com/maps/@35.9999016293,-78.9455183739,19z" target="_blank">Law School</a>)
+								</td>
+								<td id="schedule_time_data_day_one">Closed</td>
+								<td id="schedule_time_data_day_two">Closed</td>
+								<td id="schedule_time_data_day_three">7:30 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_four">7:30 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_five">7:30 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_six">7:30 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_seven">7:30 am -<br />3:00 pm</td>
+							</tr>
+							<tr id="schedule_no_zebra_row">
+								<td id="schedule_place_data">
+									<a href="" target="_blank">Bseisu Coffee Bar</a><br />(<a href="https://google.com/maps/@,,19z" target="_blank">Wilkinson Building</a>)
+								</td>
+								<td id="schedule_time_data_day_one">Closed</td>
+								<td id="schedule_time_data_day_two">Closed</td>
+								<td id="schedule_time_data_day_three">8:00 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_four">8:00 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_five">8:00 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_six">8:00 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_seven">8:00 am -<br />3:00 pm</td>
+							</tr>
+							<tr id="schedule_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/dining/cafe" target="_blank">Cafe</a><br />(<a href="https://google.com/maps/@36.0005950000,-78.9392700000,19z" target="_blank">Brodhead Center</a>)
+								</td>
+								<td id="schedule_time_data_day_one">10:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_two">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_three">7:30 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_four">7:30 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_five">7:30 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_six">7:30 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_seven">7:30 am -<br />9:00 pm</td>
+							</tr>
+							<tr id="schedule_no_zebra_row">
+								<td id="schedule_place_data">
+									<a href="http://studentaffairs.duke.edu/dining/venues-menus-hours/cafe-smith-warehouse" target="_blank">Cafe at Smith Warehouse</a><br />(<a href="https://google.com/maps/@36.0019040000,-78.9146040000,19z" target="_blank">Smith Warehouse</a>)
+								</td>
+								<td id="schedule_time_data_day_one">Closed</td>
+								<td id="schedule_time_data_day_two">Closed</td>
+								<td id="schedule_time_data_day_three">Closed</td>
+								<td id="schedule_time_data_day_four">Closed</td>
+								<td id="schedule_time_data_day_five">Closed</td>
+								<td id="schedule_time_data_day_six">Closed</td>
+								<td id="schedule_time_data_day_seven">Closed</td>
+							</tr>
+							<tr id="schedule_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/dining/menus-venues-hours/cafe-300" target="_blank">Cafe&#039; 300</a><br />(<a href="https://google.com/maps/@36.0028250000,-78.9216740000,19z" target="_blank">300 Swift Ave</a>)
+								</td>
+								<td id="schedule_time_data_day_one">10:00 am -<br />10:00 pm</td>
+								<td id="schedule_time_data_day_two">10:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_three">9:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_four">9:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_five">9:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_six">9:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_seven">9:00 am -<br />10:00 pm</td>
+							</tr>
+							<tr id="schedule_no_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/dining/venues-and-menus/divinity-cafe" target="_blank">Divinity Cafe</a><br />(<a href="https://google.com/maps/@36.0019559771,-78.9395009901,19z" target="_blank">Divinity School</a>)
+								</td>
+								<td id="schedule_time_data_day_one">Closed</td>
+								<td id="schedule_time_data_day_two">Closed</td>
+								<td id="schedule_time_data_day_three">Closed</td>
+								<td id="schedule_time_data_day_four">8:00 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_five">8:00 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_six">8:00 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_seven">8:00 am -<br />3:00 pm</td>
+							</tr>
+							<tr id="schedule_zebra_row">
+								<td id="schedule_place_data">
+									<a href="http://studentaffairs.duke.edu/dining/venues-and-menus/dolce-vita" target="_blank">Dolce Vita</a><br />(<a href="https://google.com/maps/@36.0029395386,-78.9428803738,19z" target="_blank">French Science</a>)
+								</td>
+								<td id="schedule_time_data_day_one">Closed</td>
+								<td id="schedule_time_data_day_two">Closed</td>
+								<td id="schedule_time_data_day_three">Closed</td>
+								<td id="schedule_time_data_day_four">8:00 am -<br />5:00 pm</td>
+								<td id="schedule_time_data_day_five">8:00 am -<br />5:00 pm</td>
+								<td id="schedule_time_data_day_six">8:00 am -<br />5:00 pm</td>
+								<td id="schedule_time_data_day_seven">8:00 am -<br />3:00 pm</td>
+							</tr>
+							<tr id="schedule_no_zebra_row">
+								<td id="schedule_place_data">
+									<a href="http://studentaffairs.duke.edu/dining/venues-and-menus/freeman-center-jewish-life" target="_blank">Freeman Center for Jewish Life</a><br />(<a href="https://google.com/maps/@36.0003062620,-78.9222323923,19z" target="_blank">MOBILE ORDERING ONLY</a>)
+								</td>
+								<td id="schedule_time_data_day_one">Closed</td>
+								<td id="schedule_time_data_day_two">Closed</td>
+								<td id="schedule_time_data_day_three">12:00 pm -<br />7:30 pm</td>
+								<td id="schedule_time_data_day_four">12:00 pm -<br />7:30 pm</td>
+								<td id="schedule_time_data_day_five">12:00 pm -<br />7:30 pm</td>
+								<td id="schedule_time_data_day_six">12:00 pm -<br />7:30 pm</td>
+								<td id="schedule_time_data_day_seven">Closed</td>
+							</tr>
+						</table>
+						<table><tr><td>&nbsp;</td></tr></table>
+						<table id="schedule_table">
+							<tr id="schedule_header_row">
+								<td id="schedule_place_data">Location</td>
+								<td id="schedule_time_data_day_one">Saturday<br />8 / 28 / 21</td>
+								<td id="schedule_time_data_day_two">Sunday<br />8 / 29 / 21</td>
+								<td id="schedule_time_data_day_three">Monday<br />8 / 30 / 21</td>
+								<td id="schedule_time_data_day_four">Tuesday<br />8 / 31 / 21</td>
+								<td id="schedule_time_data_day_five">Wednesday<br />9 / 1 / 21</td>
+								<td id="schedule_time_data_day_six">Thursday<br />9 / 2 / 21</td>
+								<td id="schedule_time_data_day_seven">Friday<br />9 / 3 / 21</td>
+							</tr>
+							<tr id="schedule_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/dining/ginger-soy" target="_blank">Ginger &amp; Soy</a><br />(<a href="https://google.com/maps/@36.0009270000,-78.9392170000,19z" target="_blank">Brodhead Center</a>)
+								</td>
+								<td id="schedule_time_data_day_one">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_two">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_three">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_four">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_five">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_six">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_seven">11:00 am -<br />9:00 pm</td>
+							</tr>
+							<tr id="schedule_no_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/dining/gyotaku" target="_blank">Gyotaku</a><br />(<a href="https://google.com/maps/@36.0009840000,-78.9393690000,19z" target="_blank">Brodhead Center</a>)
+								</td>
+								<td id="schedule_time_data_day_one">11:00 am -<br />8:00 pm</td>
+								<td id="schedule_time_data_day_two">11:00 am -<br />8:00 pm</td>
+								<td id="schedule_time_data_day_three">11:00 am -<br />8:00 pm</td>
+								<td id="schedule_time_data_day_four">11:00 am -<br />8:00 pm</td>
+								<td id="schedule_time_data_day_five">11:00 am -<br />8:00 pm</td>
+								<td id="schedule_time_data_day_six">11:00 am -<br />8:00 pm</td>
+								<td id="schedule_time_data_day_seven">11:00 am -<br />8:00 pm</td>
+							</tr>
+							<tr id="schedule_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/dining/il-forno" target="_blank">Il Forno</a><br />(<a href="https://google.com/maps/@36.0006790000,-78.9394230000,19z" target="_blank">Brodhead Center</a>)
+								</td>
+								<td id="schedule_time_data_day_one">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_two">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_three">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_four">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_five">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_six">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_seven">11:00 am -<br />9:00 pm</td>
+							</tr>
+							<tr id="schedule_no_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/dining/jbs-roast-and-chops" target="_blank">JB&#039;s Roasts and Chops</a><br />(<a href="https://google.com/maps/@36.0009380000,-78.9395600000,19z" target="_blank">Brodhead Center</a>)
+								</td>
+								<td id="schedule_time_data_day_one">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_two">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_three">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_four">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_five">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_six">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_seven">11:00 am -<br />9:00 pm</td>
+							</tr>
+							<tr id="schedule_zebra_row">
+								<td id="schedule_place_data">
+									<a href="http://studentaffairs.duke.edu/dining/venues-and-menus/marketplace" target="_blank">Marketplace</a><br />(<a href="https://google.com/maps/@36.0077220258,-78.9139953169,19z" target="_blank">East Campus Union</a>)
+								</td>
+								<td id="schedule_time_data_day_one">10:00 am -<br />2:30 pm<br /><br />5:00 pm - <br />9:00 pm</td>
+								<td id="schedule_time_data_day_two">10:00 am -<br />2:30 pm<br /><br />5:00 pm - <br />9:00 pm</td>
+								<td id="schedule_time_data_day_three">7:30 am -<br />11:00 am<br /><br />11:30 am - <br />2:00 pm<br /><br />5:00 pm - <br />9:00 pm</td>
+								<td id="schedule_time_data_day_four">7:30 am -<br />11:00 am<br /><br />11:30 am - <br />2:00 pm<br /><br />5:00 pm - <br />9:00 pm</td>
+								<td id="schedule_time_data_day_five">7:30 am -<br />11:00 am<br /><br />11:30 am - <br />2:00 pm<br /><br />5:00 pm - <br />9:00 pm</td>
+								<td id="schedule_time_data_day_six">7:30 am -<br />11:00 am<br /><br />11:30 am - <br />2:00 pm<br /><br />5:00 pm - <br />9:00 pm</td>
+								<td id="schedule_time_data_day_seven">7:30 am -<br />11:00 am<br /><br />11:30 am - <br />2:00 pm<br /><br />5:00 pm - <br />9:00 pm</td>
+							</tr>
+							<tr id="schedule_no_zebra_row">
+								<td id="schedule_place_data">
+									<a href="http://studentaffairs.duke.edu/dining/venues-and-menus/mcdonalds" target="_blank">McDonald&#039;s</a><br />(<a href="https://google.com/maps/@36.0010100000,-78.9407900000,19z" target="_blank">Bryan Center</a>)
+								</td>
+								<td id="schedule_time_data_day_one">6:00 am -<br />1:00 am</td>
+								<td id="schedule_time_data_day_two">8:00 am -<br />1:00 am</td>
+								<td id="schedule_time_data_day_three">6:00 am -<br />11:00 pm</td>
+								<td id="schedule_time_data_day_four">6:00 am -<br />11:00 pm</td>
+								<td id="schedule_time_data_day_five">6:00 am -<br />11:00 pm</td>
+								<td id="schedule_time_data_day_six">6:00 am -<br />11:00 pm</td>
+								<td id="schedule_time_data_day_seven">6:00 am -<br />1:00 am</td>
+							</tr>
+							<tr id="schedule_zebra_row">
+								<td id="schedule_place_data">
+									<a href="http://studentaffairs.duke.edu/dining/venues-and-menus/nasher-museum-cafe" target="_blank">Nasher Museum Cafe</a><br />(<a href="https://google.com/maps/@35.9990520223,-78.9290082443,19z" target="_blank">Nasher Museum</a>)
+								</td>
+								<td id="schedule_time_data_day_one">Closed</td>
+								<td id="schedule_time_data_day_two">Closed</td>
+								<td id="schedule_time_data_day_three">Closed</td>
+								<td id="schedule_time_data_day_four">Closed</td>
+								<td id="schedule_time_data_day_five">Closed</td>
+								<td id="schedule_time_data_day_six">Closed</td>
+								<td id="schedule_time_data_day_seven">Closed</td>
+							</tr>
+							<tr id="schedule_no_zebra_row">
+								<td id="schedule_place_data">
+									<a href="http://studentaffairs.duke.edu/dining/venues-and-menus/panda-express" target="_blank">Panda Express</a><br />(<a href="https://google.com/maps/@36.0010500000,-78.9406700000,19z" target="_blank">Bryan Center</a>)
+								</td>
+								<td id="schedule_time_data_day_one">10:30 am -<br />10:00 pm</td>
+								<td id="schedule_time_data_day_two">10:30 am -<br />10:00 pm</td>
+								<td id="schedule_time_data_day_three">10:30 am -<br />10:00 pm</td>
+								<td id="schedule_time_data_day_four">10:30 am -<br />10:00 pm</td>
+								<td id="schedule_time_data_day_five">10:30 am -<br />10:00 pm</td>
+								<td id="schedule_time_data_day_six">10:30 am -<br />10:00 pm</td>
+								<td id="schedule_time_data_day_seven">10:30 am -<br />10:00 pm</td>
+							</tr>
+							<tr id="schedule_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/dining/au-bon-pain" target="_blank">Panera</a><br />(<a href="https://google.com/maps/@36.0005840000,-78.9394840000,19z" target="_blank">Brodhead Center</a>)
+								</td>
+								<td id="schedule_time_data_day_one">7:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_two">7:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_three">7:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_four">7:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_five">7:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_six">7:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_seven">7:00 am -<br />9:00 pm</td>
+							</tr>
+							<tr id="schedule_no_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/dining/Pitchforks" target="_blank">Pitchfork&#039;s</a><br />(<a href="https://google.com/maps/@35.9989806122,-78.9380255906,19z" target="_blank">McClendon Tower</a>)
+								</td>
+								<td id="schedule_time_data_day_one">7:30 am -<br />11:00 pm</td>
+								<td id="schedule_time_data_day_two">7:30 am -<br />11:00 pm</td>
+								<td id="schedule_time_data_day_three">7:30 am -<br />3:30 am</td>
+								<td id="schedule_time_data_day_four">7:30 am -<br />3:30 am</td>
+								<td id="schedule_time_data_day_five">7:30 am -<br />3:30 am</td>
+								<td id="schedule_time_data_day_six">12:00 am -<br />12:00 am</td>
+								<td id="schedule_time_data_day_seven">12:00 am -<br />12:00 am</td>
+							</tr>
+						</table>
+						<table><tr><td>&nbsp;</td></tr></table>
+						<table id="schedule_table">
+							<tr id="schedule_header_row">
+								<td id="schedule_place_data">Location</td>
+								<td id="schedule_time_data_day_one">Saturday<br />8 / 28 / 21</td>
+								<td id="schedule_time_data_day_two">Sunday<br />8 / 29 / 21</td>
+								<td id="schedule_time_data_day_three">Monday<br />8 / 30 / 21</td>
+								<td id="schedule_time_data_day_four">Tuesday<br />8 / 31 / 21</td>
+								<td id="schedule_time_data_day_five">Wednesday<br />9 / 1 / 21</td>
+								<td id="schedule_time_data_day_six">Thursday<br />9 / 2 / 21</td>
+								<td id="schedule_time_data_day_seven">Friday<br />9 / 3 / 21</td>
+							</tr>
+							<tr id="schedule_zebra_row">
+								<td id="schedule_place_data">
+									<a href="" target="_blank">Pitchfork&#039;s Late Night - Mobile Ordering Only, No Dine-in</a><br /><br />
+								</td>
+								<td id="schedule_time_data_day_one">11:00 pm -<br />7:00 am</td>
+								<td id="schedule_time_data_day_two">11:00 pm -<br />3:30 am</td>
+								<td id="schedule_time_data_day_three">11:00 pm -<br />7:00 am</td>
+								<td id="schedule_time_data_day_four">11:00 pm -<br />7:00 am</td>
+								<td id="schedule_time_data_day_five">11:00 pm -<br />7:00 am</td>
+								<td id="schedule_time_data_day_six">11:00 pm -<br />7:00 am</td>
+								<td id="schedule_time_data_day_seven">11:00 pm -<br />7:00 am</td>
+							</tr>
+							<tr id="schedule_no_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/dining/venues-menus-hours/red-mango" target="_blank">Red Mango Cafe</a><br />(<a href="https://google.com/maps/@35.9969319027,-78.9406134491,19z" target="_blank">Wilson Recreation Center</a>)
+								</td>
+								<td id="schedule_time_data_day_one">10:00 am -<br />8:00 pm</td>
+								<td id="schedule_time_data_day_two">9:00 am -<br />5:00 pm</td>
+								<td id="schedule_time_data_day_three">9:00 am -<br />7:00 pm</td>
+								<td id="schedule_time_data_day_four">9:00 am -<br />7:00 pm</td>
+								<td id="schedule_time_data_day_five">9:00 am -<br />7:00 pm</td>
+								<td id="schedule_time_data_day_six">9:00 am -<br />7:00 pm</td>
+								<td id="schedule_time_data_day_seven">9:00 am -<br />5:00 pm</td>
+							</tr>
+							<tr id="schedule_zebra_row">
+								<td id="schedule_place_data">
+									<a href="http://studentaffairs.duke.edu/dining/venues-and-menus/perk" target="_blank">Saladelia Cafe at Perkins</a><br />(<a href="https://google.com/maps/@36.0021860000,-78.9382780000,19z" target="_blank">Bostock Library</a>)
+								</td>
+								<td id="schedule_time_data_day_one">8:00 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_two">8:00 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_three">8:00 am -<br />11:00 pm</td>
+								<td id="schedule_time_data_day_four">8:00 am -<br />11:00 pm</td>
+								<td id="schedule_time_data_day_five">8:00 am -<br />11:00 pm</td>
+								<td id="schedule_time_data_day_six">8:00 am -<br />11:00 pm</td>
+								<td id="schedule_time_data_day_seven">8:00 am -<br />5:00 pm</td>
+							</tr>
+							<tr id="schedule_no_zebra_row">
+								<td id="schedule_place_data">
+									<a href="http://studentaffairs.duke.edu/dining/venues-and-menus/sanford-deli" target="_blank">Saladelia Cafe at Sanford</a><br />(<a href="https://google.com/maps/@35.9993937527,-78.9439233063,19z" target="_blank">Sanford School of Public Policy</a>)
+								</td>
+								<td id="schedule_time_data_day_one">Closed</td>
+								<td id="schedule_time_data_day_two">Closed</td>
+								<td id="schedule_time_data_day_three">8:00 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_four">8:00 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_five">8:00 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_six">8:00 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_seven">8:00 am -<br />3:00 pm</td>
+							</tr>
+							<tr id="schedule_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/sazon" target="_blank">Sazon</a><br />(<a href="https://google.com/maps/@36.0006070000,-78.9393310000,19z" target="_blank">Brodhead Center</a>)
+								</td>
+								<td id="schedule_time_data_day_one">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_two">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_three">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_four">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_five">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_six">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_seven">11:00 am -<br />9:00 pm</td>
+							</tr>
+							<tr id="schedule_no_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/dining/sprout" target="_blank">Sprout</a><br />(<a href="https://google.com/maps/@36.0008470000,-78.9393080000,19z" target="_blank">Brodhead Center</a>)
+								</td>
+								<td id="schedule_time_data_day_one">11:00 am -<br />4:00 pm</td>
+								<td id="schedule_time_data_day_two">11:00 am -<br />8:00 pm</td>
+								<td id="schedule_time_data_day_three">8:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_four">8:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_five">8:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_six">8:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_seven">8:00 am -<br />9:00 pm</td>
+							</tr>
+							<tr id="schedule_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/dining/tandoor" target="_blank">Tandoor</a><br />(<a href="https://google.com/maps/@36.0009781565,-78.9394928307,19z" target="_blank">Brodhead Center</a>)
+								</td>
+								<td id="schedule_time_data_day_one">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_two">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_three">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_four">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_five">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_six">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_seven">11:00 am -<br />9:00 pm</td>
+							</tr>
+							<tr id="schedule_no_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/dining/venues-and-menus/terrace-cafe" target="_blank">Terrace Cafe&#039;</a><br />(<a href="https://google.com/maps/@36.0009169000,-78.9357222000,19z" target="_blank">Duke Gardens</a>)
+								</td>
+								<td id="schedule_time_data_day_one">Closed</td>
+								<td id="schedule_time_data_day_two">Closed</td>
+								<td id="schedule_time_data_day_three">Closed</td>
+								<td id="schedule_time_data_day_four">Closed</td>
+								<td id="schedule_time_data_day_five">Closed</td>
+								<td id="schedule_time_data_day_six">Closed</td>
+								<td id="schedule_time_data_day_seven">Closed</td>
+							</tr>
+							<tr id="schedule_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/dining/chefs-kitchen" target="_blank">The Chef&#039;s Kitchen</a><br />(<a href="https://google.com/maps/@36.0007210000,-78.9393840000,19z" target="_blank">Brodhead Center</a>)
+								</td>
+								<td id="schedule_time_data_day_one">Closed</td>
+								<td id="schedule_time_data_day_two">Closed</td>
+								<td id="schedule_time_data_day_three">Closed</td>
+								<td id="schedule_time_data_day_four">11:00 am -<br />2:00 pm</td>
+								<td id="schedule_time_data_day_five">11:00 am -<br />2:00 pm</td>
+								<td id="schedule_time_data_day_six">11:00 am -<br />2:00 pm</td>
+								<td id="schedule_time_data_day_seven">11:00 am -<br />2:00 pm</td>
+							</tr>
+							<tr id="schedule_no_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/dining/the-commons" target="_blank">The Commons</a><br />(<a href="https://google.com/maps/@36.0006070000,-78.9394070000,19z" target="_blank">Brodhead Center</a>)
+								</td>
+								<td id="schedule_time_data_day_one">5:00 pm -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_two">Closed</td>
+								<td id="schedule_time_data_day_three">11:30 am -<br />2:00 pm<br /><br />5:00 pm - <br />9:00 pm</td>
+								<td id="schedule_time_data_day_four">11:30 am -<br />2:00 pm<br /><br />5:00 pm - <br />9:00 pm</td>
+								<td id="schedule_time_data_day_five">11:30 am -<br />2:00 pm<br /><br />5:00 pm - <br />9:00 pm</td>
+								<td id="schedule_time_data_day_six">11:30 am -<br />2:00 pm<br /><br />5:00 pm - <br />9:00 pm</td>
+								<td id="schedule_time_data_day_seven">11:30 am -<br />2:00 pm<br /><br />5:00 pm - <br />9:00 pm</td>
+							</tr>
+						</table>
+						<table><tr><td>&nbsp;</td></tr></table>
+						<table id="schedule_table">
+							<tr id="schedule_header_row">
+								<td id="schedule_place_data">Location</td>
+								<td id="schedule_time_data_day_one">Saturday<br />8 / 28 / 21</td>
+								<td id="schedule_time_data_day_two">Sunday<br />8 / 29 / 21</td>
+								<td id="schedule_time_data_day_three">Monday<br />8 / 30 / 21</td>
+								<td id="schedule_time_data_day_four">Tuesday<br />8 / 31 / 21</td>
+								<td id="schedule_time_data_day_five">Wednesday<br />9 / 1 / 21</td>
+								<td id="schedule_time_data_day_six">Thursday<br />9 / 2 / 21</td>
+								<td id="schedule_time_data_day_seven">Friday<br />9 / 3 / 21</td>
+							</tr>
+							<tr id="schedule_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/dining/devils-krafthouse" target="_blank">The Devil&#039;s Krafthouse</a><br />(<a href="https://google.com/maps/@36.0007100000,-78.9397130000,19z" target="_blank">Brodhead Center</a>)
+								</td>
+								<td id="schedule_time_data_day_one">11:00 am -<br />12:00 am</td>
+								<td id="schedule_time_data_day_two">11:00 am -<br />12:00 am</td>
+								<td id="schedule_time_data_day_three">11:00 am -<br />12:00 am</td>
+								<td id="schedule_time_data_day_four">11:00 am -<br />12:00 am</td>
+								<td id="schedule_time_data_day_five">11:00 am -<br />12:00 am</td>
+								<td id="schedule_time_data_day_six">11:00 am -<br />12:00 am</td>
+								<td id="schedule_time_data_day_seven">11:00 am -<br />12:00 am</td>
+							</tr>
+							<tr id="schedule_no_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/dining/the-farmstead" target="_blank">The Farmstead</a><br />(<a href="https://google.com/maps/@36.0007930000,-78.9392320000,19z" target="_blank">Brodhead Center</a>)
+								</td>
+								<td id="schedule_time_data_day_one">11:00 am -<br />4:00 pm</td>
+								<td id="schedule_time_data_day_two">11:00 am -<br />8:00 pm</td>
+								<td id="schedule_time_data_day_three">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_four">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_five">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_six">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_seven">11:00 am -<br />9:00 pm</td>
+							</tr>
+							<tr id="schedule_zebra_row">
+								<td id="schedule_place_data">
+									<a href="http://studentaffairs.duke.edu/dining/venues-and-menus/loop-pizza-grill" target="_blank">The Loop Pizza Grill</a><br />(<a href="https://google.com/maps/@36.0008600000,-78.9407400000,19z" target="_blank">Bryan Center</a>)
+								</td>
+								<td id="schedule_time_data_day_one">11:00 am -<br />12:00 am</td>
+								<td id="schedule_time_data_day_two">12:00 pm -<br />12:00 am</td>
+								<td id="schedule_time_data_day_three">11:00 am -<br />12:00 am</td>
+								<td id="schedule_time_data_day_four">11:00 am -<br />12:00 am</td>
+								<td id="schedule_time_data_day_five">11:00 am -<br />12:00 am</td>
+								<td id="schedule_time_data_day_six">11:00 am -<br />12:00 am</td>
+								<td id="schedule_time_data_day_seven">11:00 am -<br />12:00 am</td>
+							</tr>
+							<tr id="schedule_no_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/dining/the-skillet" target="_blank">The Skillet</a><br />(<a href="https://google.com/maps/@36.0008010000,-78.9396510000,19z" target="_blank">Brodhead Center</a>)
+								</td>
+								<td id="schedule_time_data_day_one">9:00 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_two">9:00 am -<br />3:00 pm</td>
+								<td id="schedule_time_data_day_three">7:30 am -<br />2:30 am</td>
+								<td id="schedule_time_data_day_four">7:30 am -<br />2:30 am</td>
+								<td id="schedule_time_data_day_five">7:30 am -<br />2:30 am</td>
+								<td id="schedule_time_data_day_six">7:30 am -<br />2:30 am</td>
+								<td id="schedule_time_data_day_seven">7:30 am -<br />2:30 am</td>
+							</tr>
+							<tr id="schedule_zebra_row">
+								<td id="schedule_place_data">
+									<a href="https://studentaffairs.duke.edu/thrive-kitchen-and-catering" target="_blank">Thrive Kitchen and Catering</a><br />(<a href="https://google.com/maps/@36.0042211000,-78.9292202000,19z" target="_blank">Duke Dine-Out Mobile Ordering Only</a>)
+								</td>
+								<td id="schedule_time_data_day_one">11:00 am -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_two">11:00 am -<br />4:30 pm</td>
+								<td id="schedule_time_data_day_three">12:00 pm -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_four">12:00 pm -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_five">12:00 pm -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_six">12:00 pm -<br />9:00 pm</td>
+								<td id="schedule_time_data_day_seven">12:00 pm -<br />9:00 pm</td>
+							</tr>
+							<tr id="schedule_no_zebra_row">
+								<td id="schedule_place_data">
+									<a href="http://studentaffairs.duke.edu/dining/venues-and-menus/trinity-cafe" target="_blank">Trinity Cafe</a><br />(<a href="https://google.com/maps/@36.0075220258,-78.9139153169,19z" target="_blank">East Campus Union</a>)
+								</td>
+								<td id="schedule_time_data_day_one">12:00 pm -<br />10:00 pm</td>
+								<td id="schedule_time_data_day_two">12:00 pm -<br />11:00 pm</td>
+								<td id="schedule_time_data_day_three">8:00 am -<br />11:00 pm</td>
+								<td id="schedule_time_data_day_four">8:00 am -<br />11:00 pm</td>
+								<td id="schedule_time_data_day_five">8:00 am -<br />11:00 pm</td>
+								<td id="schedule_time_data_day_six">8:00 am -<br />11:00 pm</td>
+								<td id="schedule_time_data_day_seven">8:00 am -<br />10:00 pm</td>
+							</tr>
+							<tr id="schedule_zebra_row">
+								<td id="schedule_place_data">
+									<a href="http://studentaffairs.duke.edu/dining/venues-and-menus/twinnies" target="_blank">Twinnie&#039;s</a><br />(<a href="https://google.com/maps/@36.0033193507,-78.9397538010,19z" target="_blank">CIEMAS</a>)
+								</td>
+								<td id="schedule_time_data_day_one">Closed</td>
+								<td id="schedule_time_data_day_two">Closed</td>
+								<td id="schedule_time_data_day_three">8:00 am -<br />6:00 pm</td>
+								<td id="schedule_time_data_day_four">8:00 am -<br />6:00 pm</td>
+								<td id="schedule_time_data_day_five">8:00 am -<br />6:00 pm</td>
+								<td id="schedule_time_data_day_six">8:00 am -<br />6:00 pm</td>
+								<td id="schedule_time_data_day_seven">8:00 am -<br />6:00 pm</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div> <!-- End of face Body content -->
+		</div><br/><!-- End #main-wrapper -->
+		<div id="footer-container">	
+			<footer>
+				<div class="region region-footer">
+					<aside id="block-menu-menu-footer-menu" class="block block-menu contextual-links-region">
+						<div class="clearfix content">
+                            <ul class="menu">
+                                <li class="leaf level-1" id="menu-footer-menu-1">
+                                    <a href="https://studentaffairs.duke.edu/contact-us-student-affairs" rel="noopener noreferrer">Contact Us</a>
+                                </li>
+                                <li class="leaf level-1" id="menu-footer-menu-2">
+                                    <a href="https://studentaffairs.duke.edu/donate">Donate</a>
+                                </li>
+                                <li class="leaf level-1" id="menu-footer-menu-3">
+                                    <a href="https://studentaffairs.duke.edu/dukereach1">DukeReach</a>
+                                </li>
+                                <li class="leaf level-1" id="menu-footer-menu-4">
+                                    <a href="https://studentaffairs.duke.edu/bias-response">Bias Response</a>
+                                </li>
+                                <li class="leaf level-1" id="menu-footer-menu-5">
+                                    <a href="https://studentaffairs.duke.edu/ra/human-resources/job-openings">Job Openings</a>
+                                </li>
+                                <li class="leaf level-1" id="menu-footer-menu-6">
+                                    <a href="https://durham.duke.edu/">Duke in Durham</a>
+                                </li>
+                                <li class="leaf level-1" id="menu-footer-menu-7">
+                                    <a href="https://studentaffairs.duke.edu/sexual-misconduct-prevention-and-response">
+                                        Sexual Misconduct Prevention & Intervention
+                                    </a>
+                                </li>
+                            </ul>
+						</div>
+					</aside>
+					<aside id="block-block-98" class="block block-block contextual-links-region">
+						<div class="clearfix content">
+							<p><a href="https://studentaffairs.duke.edu">Duke University Student Affairs</a></p>
+						</div>
+					</aside><!-- end #block-block-98 -->
+					<aside id="block-block-99" class="block block-block contextual-links-region">
+						<div class="clearfix content">
+							<ul>
+								<li>
+                                    <a class="facebook"
+                                    href="https://www.facebook.com/DukeStudentAffairs"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                        Facebook
+                                    </a>
+                                </li>
+								<li>
+                                    <a class="twitter"
+                                    href="https://twitter.com/Duke_SA"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                        Twitter
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="instagram"
+                                    href="https://www.instagram.com/dukestudentaffairs/"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                        Instagram
+                                    </a>
+                                </li>
+								<li>
+                                    <a class="flickr"
+                                    href="https://www.flickr.com/photos/dukeuniversity/"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                        Flickr
+                                    </a>
+                                </li>
+								<li>
+                                    <a class="youtube"
+                                    href="https://www.youtube.com/user/dustuaff"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                        YouTube
+                                    </a>
+                                </li>
+              					<li>
+                                    <a class="blog"
+                                    href="https://studentaffairs.duke.edu/blog"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                        Blog
+                                    </a>
+                                </li>
+              				</ul>
+              			</div>
+					</aside>
+					<aside id="block-block-1" class="block block-block contextual-links-region">
+    					<div class="clearfix content"><p>&#64;2021 Duke Student Affairs. All Rights Reserved.</p></div>
+					</aside>
+				</div>
+      		</footer>
+      	</div>
+	</body>
+</html>
