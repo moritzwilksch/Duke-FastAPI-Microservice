@@ -46,3 +46,8 @@ async def root():
     
 
     return {"recommendation": {'restaurant': tup[0], 'todays_hours': tup[1]}}
+
+
+@app.get("/status")
+def status():
+    return {'msg': "I'm alive!"}
