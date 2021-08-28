@@ -7,6 +7,8 @@ app = FastAPI()
 
 
 def retrieve_data():
+    """Make HTTP request and return its contents"""
+
     URL = "https://app.studentaffairs.duke.edu/dining/menus-hours/"
     r = requests.get(URL)
     
@@ -16,25 +18,10 @@ def retrieve_data():
     return r.content
 
 
-
-
-@app.get("/")
-async def root():
-    soup = BeautifulSoup(retrieve_data(), 'lxml')
-
-    # l = soup.select("td#schedule_place_data a")
-
-    # restaurant_names = []
-    # for a in l:
-    #     restaurant_names.append(a.contents)
-
-    # l = soup.find_all("td", id='schedule_time_data_day_one')
-
-    # hours = []
-    # for x in l:
-    #     hours.append(x.contents)
-
-    # print(len(restaurant_names), len(hours))
+def scrape_restaurants_and_hours(data):
+    """Extract list of (rest_name, hours) tuples from html page"""
+    
+    soup = BeautifulSoup(data, 'lxml')
 
     l = soup.select("tr")
 
@@ -45,7 +32,13 @@ async def root():
         if link and hours:
             restaurants.append((link[0].contents[0], "".join(x.strip() for x in hours[0].contents if isinstance(x, str))))
     
-    print(restaurants)
+    return restaurants
+
+
+@app.get("/")
+async def root():
+    data = retrieve_data()
+    restaurants = scrape_restaurants_and_hours(data)
 
     open_restaurants = [r for r in restaurants if r[1] != 'Closed']
 
