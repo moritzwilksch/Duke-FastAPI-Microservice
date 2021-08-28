@@ -6,4 +6,8 @@ Whats for lunch? This microservice knows and returns a randomly chosen, currentl
 ## Architecture
 ![](architecture_diag.svg)  
 
-FastAPI micro-service deployed to GCP for Duke IDS706
+## CI/CD
+- Makefile for environment setup
+- pytest for unit testing
+- Test runs through Github Actions for CI
+- Continuous Delivery to GCP AppEngine to deploy changes on build
