@@ -10,4 +10,5 @@ Whats for lunch? This microservice knows and returns a randomly chosen, currentl
 - Makefile for environment setup
 - pytest for unit testing
 - Test runs through Github Actions for CI
-- Continuous Delivery to GCP AppEngine to deploy changes on build
+- Deployment to GCP AppEngine
+- Continuous Delivery with GCP Cloud Build to deploy changes on build
