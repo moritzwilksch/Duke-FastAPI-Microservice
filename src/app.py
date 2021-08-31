@@ -53,7 +53,7 @@ async def root():
     data = retrieve_data()
     restaurants = scrape_restaurants_and_hours(data)
 
-    return {"recommendation": {'all_restaurants': restaurants}}
+    return {'all_restaurants': restaurants}
 
 
 @app.get("/open-restaurants")
@@ -62,7 +62,7 @@ async def root():
     restaurants = scrape_restaurants_and_hours(data)
 
     open_restaurants = [r for r in restaurants if r[1] != 'Closed']
-    return {"recommendation": {'open_restaurants': open_restaurants}}
+    return {'open_restaurants': open_restaurants}
 
 
 @app.get("/status")
