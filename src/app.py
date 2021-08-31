@@ -48,6 +48,23 @@ async def root():
     return {"recommendation": {'restaurant': tup[0], 'todays_hours': tup[1]}}
 
 
+@app.get("/all-restaurants")
+async def root():
+    data = retrieve_data()
+    restaurants = scrape_restaurants_and_hours(data)
+
+    return {"recommendation": {'all_restaurants': restaurants}}
+
+
+@app.get("/open-restaurants")
+async def root():
+    data = retrieve_data()
+    restaurants = scrape_restaurants_and_hours(data)
+
+    open_restaurants = [r for r in restaurants if r[1] != 'Closed']
+    return {"recommendation": {'open_restaurants': open_restaurants}}
+
+
 @app.get("/status")
 def status():
     return {'msg': "I'm alive!!"}
